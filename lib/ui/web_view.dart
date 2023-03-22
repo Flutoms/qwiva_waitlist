@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:qwiva_waitlist/helpers/global_assets.dart';
 import 'package:qwiva_waitlist/helpers/helpers.dart';
 import 'package:qwiva_waitlist/helpers/text_styles.dart';
+import 'package:qwiva_waitlist/ui/service.dart';
 import 'package:sizer/sizer.dart';
 
 import 'components/global_button.dart';
@@ -46,68 +47,75 @@ class _WebViewState extends State<WebView> {
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Gap(6.h),
-                      SvgPicture.asset(GlobalAssets.logo),
-                      Gap(10.h),
-                      rainbowText(
-                          title: 'Quality Health ',
-                          subTitle: 'for \nEveryone',
-                          fontSize: 60),
-                      Gap(4.h),
-                      SizedBox(
-                        width: 50.w,
-                        child: Text(
-                            'Get your medications with ease, '
-                            'no need to move from pharmacies to '
-                            'pharmacies. Get notified when we launch.',
-                            textAlign: TextAlign.center,
-                            style: GlobalTextStyles.regularText()),
-                      ),
-                      Gap(4.h),
-                      SizedBox(
-                        width: 430,
-                        child: GlobalFormField(
-                            fieldName: 'Tell us your name ...',
-                            keyBoardType: TextInputType.emailAddress,
-                            textController: nameController),
-                      ),
-                      Gap(2.h),
-                      SizedBox(
-                        width: 430,
-                        child: GlobalFormField(
-                            fieldName: 'Enter your email address ...',
-                            keyBoardType: TextInputType.emailAddress,
-                            textController: emailController),
-                      ),
-                      Gap(4.h),
-                      GlobalButton(
-                          btnText: 'Notify Me on Launch',
-                          height: 7.h,
-                          width: 430,
-                          onTap: () {
-                            showSuccessDialog(context);
-                            // if (formKey.validate) {}
-                          }),
-                      Gap(4.h),
-                      Image.asset(GlobalAssets.peopleWebView),
-                      Gap(4.h),
-                      Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(
-                                text: '+200 ',
-                                style: GlobalTextStyles.bold(fontSize: 18)),
-                            TextSpan(
-                                text: 'People joined',
-                                style: GlobalTextStyles.regularText()),
-                          ],
+                  child: Form(
+                    key: formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Gap(6.h),
+                        SvgPicture.asset(GlobalAssets.logo),
+                        Gap(10.h),
+                        rainbowText(
+                            title: 'Quality Health ',
+                            subTitle: 'for \nEveryone',
+                            fontSize: 60),
+                        Gap(4.h),
+                        SizedBox(
+                          width: 50.w,
+                          child: Text(
+                              'Get your medications with ease, '
+                              'no need to move from pharmacies to '
+                              'pharmacies. Get notified when we launch.',
+                              textAlign: TextAlign.center,
+                              style: GlobalTextStyles.regularText()),
                         ),
-                        textAlign: TextAlign.center,
-                      )
-                    ],
+                        Gap(4.h),
+                        SizedBox(
+                          width: 430,
+                          child: GlobalFormField(
+                              fieldName: 'Tell us your name ...',
+                              keyBoardType: TextInputType.name,
+                              textController: nameController),
+                        ),
+                        Gap(2.h),
+                        SizedBox(
+                          width: 430,
+                          child: GlobalFormField(
+                              fieldName: 'Enter your email address ...',
+                              keyBoardType: TextInputType.emailAddress,
+                              textController: emailController),
+                        ),
+                        Gap(4.h),
+                        GlobalButton(
+                            btnText: 'Notify Me on Launch',
+                            height: 7.h,
+                            width: 430,
+                            onTap: () {
+                              if (formKey.validate) {
+                                FireStoreService.addToWaitList(
+                                    name: nameController.text,
+                                    email: emailController.text,
+                                    context: context);
+                              }
+                            }),
+                        Gap(4.h),
+                        Image.asset(GlobalAssets.peopleWebView),
+                        Gap(4.h),
+                        Text.rich(
+                          TextSpan(
+                            children: [
+                              TextSpan(
+                                  text: '+200 ',
+                                  style: GlobalTextStyles.bold(fontSize: 18)),
+                              TextSpan(
+                                  text: 'People joined',
+                                  style: GlobalTextStyles.regularText()),
+                            ],
+                          ),
+                          textAlign: TextAlign.center,
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),

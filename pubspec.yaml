@@ -23,6 +23,9 @@ dependencies:
   # For spacing
   gap: ^2.0.0
 
+  cloud_firestore: ^4.2.0
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
