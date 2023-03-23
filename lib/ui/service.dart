@@ -32,7 +32,7 @@ class FireStoreService {
       Navigator.pop(context);
 
       showSuccessDialog(
-          context: context, count: waitList['waiters'].length + 1);
+          context: context, count: waitList['waiters'].length + 200);
     });
   }
 }
