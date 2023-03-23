@@ -25,7 +25,8 @@ class FireStoreService {
       ]
     }).whenComplete(() {
       Navigator.pop(context);
-      showSuccessDialog(context);
+
+      showSuccessDialog(context: context, count: waiters.data()!.length + 1);
     });
   }
 }
