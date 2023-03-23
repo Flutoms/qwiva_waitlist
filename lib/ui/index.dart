@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:qwiva_waitlist/helpers/colors.dart';
-import 'package:qwiva_waitlist/helpers/size_config.dart';
 import 'package:qwiva_waitlist/ui/home.dart';
 import 'package:sizer/sizer.dart';
-
-import 'web_view.dart';
 
 class Index extends StatefulWidget {
   const Index({Key? key}) : super(key: key);

@@ -80,7 +80,7 @@ class _MobileViewState extends State<MobileView> {
                         ),
                         Gap(3.h),
                         GlobalButton(
-                            btnText: 'Notify Me on Launch',
+                            btnText: 'Notify me on launch',
                             height: 7.h,
                             onTap: () {
                               if (formKey.validate) {

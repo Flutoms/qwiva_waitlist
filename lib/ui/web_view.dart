@@ -87,7 +87,7 @@ class _WebViewState extends State<WebView> {
                         ),
                         Gap(4.h),
                         GlobalButton(
-                            btnText: 'Notify Me on Launch',
+                            btnText: 'Notify me on launch',
                             height: 7.h,
                             width: 430,
                             onTap: () {
