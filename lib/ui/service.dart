@@ -10,11 +10,16 @@ class FireStoreService {
       {required String name,
       required String email,
       required BuildContext context}) async {
-    final body = {'name': name, 'email': email, 'date': DateTime.now()};
+    final body = {
+      'name': name,
+      'email': email,
+      'date': DateTime.now().toString()
+    };
 
     showLoaderDialog(context);
 
     var waiters = await docWaitList.get();
+    var waitList = waiters.data() as Map;
 
     docWaitList.update({
       'waiters': [
@@ -26,7 +31,8 @@ class FireStoreService {
     }).whenComplete(() {
       Navigator.pop(context);
 
-      showSuccessDialog(context: context, count: waiters.data()!.length + 1);
+      showSuccessDialog(
+          context: context, count: waitList['waiters'].length + 1);
     });
   }
 }

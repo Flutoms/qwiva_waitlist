@@ -42,7 +42,7 @@ void showSuccessDialog({required BuildContext context, required int count}) {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Image.asset(GlobalAssets.successCheck, height: 8.h),
-                      SizedBox(height: 2.h),
+                      SizedBox(height: 4.h),
                       Text('We’ve added you to our waiting list',
                           textAlign: TextAlign.center,
                           style: GlobalTextStyles.bold(fontSize: 24)),
