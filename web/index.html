@@ -44,11 +44,14 @@
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
+        let config = {
+      renderer: "canvaskit",
+    }
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         }
       }).then(function(engineInitializer) {
-        return engineInitializer.initializeEngine();
+        return engineInitializer.initializeEngine(config);
       }).then(function(appRunner) {
         return appRunner.runApp();
       });
