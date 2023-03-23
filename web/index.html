@@ -40,18 +40,18 @@
   <script src="flutter.js" defer></script>
 </head>
 <body>
+<script>
+  window.flutterWebRenderer = 'canvaskit';
+</script>
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
-        let config = {
-      renderer: "canvaskit",
-    }
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         }
       }).then(function(engineInitializer) {
-        return engineInitializer.initializeEngine(config);
+        return engineInitializer.initializeEngine();
       }).then(function(appRunner) {
         return appRunner.runApp();
       });
