@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:qwiva_waitlist/helpers/colors.dart';
 import 'package:qwiva_waitlist/ui/components/aqwiva_animated_logo.dart';
+import 'package:qwiva_waitlist/ui/components/global_button.dart';
 import 'package:sizer/sizer.dart';
 
 import 'global_assets.dart';
@@ -19,7 +20,7 @@ void showLoaderDialog(BuildContext context) {
           child: const Center(child: QwivaAnimatedLogo(size: 20))));
 }
 
-void showSuccessDialog(BuildContext context) {
+void showSuccessDialog({required BuildContext context, required int count}) {
   showGeneralDialog(
       context: context,
       barrierColor: Colors.black26,
@@ -50,11 +51,27 @@ void showSuccessDialog(BuildContext context) {
                           textAlign: TextAlign.center,
                           style: GlobalTextStyles.regularText(fontSize: 14)),
                       SizedBox(height: 2.h),
-                      Text(
-                        'You are number 296 on our wait list',
-                        textAlign: TextAlign.center,
-                        style: GlobalTextStyles.regularText(fontSize: 14),
-                      ),
+                      Text.rich(TextSpan(
+                        children: [
+                          TextSpan(
+                              text: 'You are number ',
+                              style:
+                                  GlobalTextStyles.regularText(fontSize: 14)),
+                          TextSpan(
+                              text: count.toString(),
+                              style: GlobalTextStyles.bold()),
+                          TextSpan(
+                              text: ' on our wait list',
+                              style: GlobalTextStyles.regularText(fontSize: 14))
+                        ],
+                      )),
+                      SizedBox(height: 6.h),
+                      GlobalButton(
+                          btnText: 'Continue',
+                          width: 20.h,
+                          height: 6.h,
+                          color: GlobalColors.primary,
+                          onTap: () => Navigator.pop(context))
                     ]),
               ),
             ),
