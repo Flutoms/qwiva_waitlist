@@ -23,10 +23,19 @@ dependencies:
   # For spacing
   gap: ^2.0.0
 
+  # Native splash
+  flutter_native_splash:
+
   cloud_firestore: ^4.2.0
 
 
 dev_dependencies:
+
+flutter_native_splash:
+  color: "#0B1E4B"
+  web: true
+  image: assets/images/icon.png
+
   flutter_test:
     sdk: flutter
 
