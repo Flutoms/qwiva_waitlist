@@ -55,7 +55,7 @@ class _EdenAnimatedLogo extends State<QwivaAnimatedLogo>
     return Center(
       child: FadeTransition(
         opacity: _fadeInEdenAnimatedLogoOut,
-        child: SvgPicture.asset(GlobalAssets.qwivaLogo),
+        child: Image.asset(GlobalAssets.qwivaLogo),
       ),
     );
   }

@@ -63,9 +63,9 @@ class _WebViewState extends State<WebView> {
                         SizedBox(
                           width: 50.w,
                           child: Text(
-                              'Get your medications with ease, '
-                              'no need to move from pharmacies to '
-                              'pharmacies. Get notified when we launch.',
+                              'Get your medications effortlessly without '
+                              'having to visit multiple pharmacies. '
+                              'Be the first to know when we launch.',
                               textAlign: TextAlign.center,
                               style: GlobalTextStyles.regularText()),
                         ),
